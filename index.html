@@ -3,25 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login and Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            text-align: center;
+        }
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-container input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .login-container button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .gallery-item {
+            flex: 1 1 calc(33.333% - 40px);
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .gallery-item img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .gallery-item p {
+            margin-top: 10px;
+        }
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 1 1 calc(50% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery-item {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Practice Form</h1>
-    <form>
-        <label for="EmailPlace">Email:</label>
-        <input type="email" id= "EmailPlace" name = "EmailPlace" placeholder= "Email@gmail.com">
-        <br>
-        <label for="PasswordPlace">Password:</label>
-        <input type="password" id= "PasswordPlace" name = "PasswordPlace" placeholder= "Password">
-        <label for="PasswordPlace">Confirm Password:</label>
-        <select id="PasswordPlace" name="PasswordPlace">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select>
-        <textarea name="message" rows="5" cols="5" placeholder="textarea"></textarea>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300" alt="Image 1">
+            <p>Description of Image 1</p>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300" alt="Image 2">
+            <p>Description of Image 2</p>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300" alt="Image 3">
+            <p>Description of Image 3</p>
+        </div>
+    </div>
 </body>
 </html>
