@@ -1,28 +1,38 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+def login(users, username, password):
+    if username in users and users[username] == password:
+        return f"Welcome, {username}!"
+    else:
+        return "Invalid username or password."
 
-app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with a secure key
+def create_account(users, username, password):
+    if username in users:
+        return "Username already exists. Please choose a different username."
+    else:
+        users[username] = password
+        return "Account created successfully!"
 
-# Dummy user data for demonstration
+
 users = {
-    "testuser": "password123"
+    "admin": "password123",
+    "user": "mypassword"
 }
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+while True:
+    print("\n1. Login")
+    print("2. Create Account")
+    print("3. Exit")
+    choice = input("Choose an option: ")
 
-@app.route('/login', methods=['POST'])
-def login():
-    username = request.form.get('username')
-    password = request.form.get('password')
-
-    if username in users and users[username] == password:
-        flash('Login successful!', 'success')
-        return redirect(url_for('index'))
+    if choice == "1":
+        username = input("Enter username: ")
+        password = input("Enter password: ")
+        print(login(users, username, password))
+    elif choice == "2":
+        username = input("Enter a new username: ")
+        password = input("Enter a new password: ")
+        print(create_account(users, username, password))
+    elif choice == "3":
+        print("Goodbye!")
+        break
     else:
-        flash('Invalid username or password.', 'danger')
-        return redirect(url_for('index'))
-
-if __name__ == '__main__':
-    app.run(debug=True)
+        print("Please try again.")
